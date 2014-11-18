@@ -25,8 +25,16 @@ directory = "/Users/nixonite/Desktop/"+board
 os.chdir("/")
 if not os.path.exists(directory):
     os.makedirs(directory)
+
 webtry = urllib2.urlopen('http://boards.4chan.org/'+board+"/")
 html = webtry.read()
 
 parser = MyHTMLParser()
 parser.feed(html)
+
+for i in range(2,11):
+	webtry = urllib2.urlopen('http://boards.4chan.org/'+board+"/"+str(i))
+	html = webtry.read()
+
+	parser = MyHTMLParser()
+	parser.feed(html)
